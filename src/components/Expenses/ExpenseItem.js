@@ -17,7 +17,7 @@ function ExpenseItem(props) {
                 <p>$ {props.amount}</p>
             </div>
             <div className="col-md-3">
-                <button onClick={expenseAction}>
+                <button className="btn btn-warning ex-btn" onClick={expenseAction}>
                     Edit title
                 </button>
             </div>
