@@ -3,6 +3,10 @@ import { Button } from 'react-bootstrap';
 
 const ExpenseForm = (props) => {
 
+    const onTitleChangeEvent = (event) => {
+      console.log(event.target.value)
+    }
+
     return (
       <div>
           <Form>
@@ -10,7 +14,7 @@ const ExpenseForm = (props) => {
                   <div className="col-md-4">
                       <Form.Group className="mb-3" controlId="title">
                           <Form.Label>Title</Form.Label>
-                          <Form.Control type="text" />
+                          <Form.Control type="text" onChange={onTitleChangeEvent} />
                       </Form.Group>
                   </div>
                   <div className="col-md-4">
