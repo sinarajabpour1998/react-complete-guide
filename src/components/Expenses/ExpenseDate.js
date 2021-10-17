@@ -4,9 +4,7 @@ const ExpenseDate = (props) => {
     const year = props.date.getFullYear();
 
     return (
-        <div className="col-md-3">
-            <p>{day} {month} {year}</p>
-        </div>
+        <p>{day} {month} {year}</p>
     );
 }
 

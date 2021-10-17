@@ -1,6 +1,5 @@
 import './ExpenseItem.css';
 import ExpenseDate from "./ExpenseDate";
-import Card from "../UI/Card";
 import {useState} from "react";
 
 function ExpenseItem(props) {
@@ -13,20 +12,25 @@ function ExpenseItem(props) {
     }
 
     return (
-        <Card parentClasses={"container"} childClasses={"row text-center item mb-2"}>
-            <ExpenseDate date={props.date} />
-            <div className="col-md-3">
+        <tr>
+            <td>
+                <p>{props.id}</p>
+            </td>
+            <td>
                 <p>{title}</p>
-            </div>
-            <div className="col-md-3">
+            </td>
+            <td>
                 <p>$ {props.amount}</p>
-            </div>
-            <div className="col-md-3">
-                <button className="btn btn-warning ex-btn" onClick={expenseAction}>
+            </td>
+            <td>
+                <ExpenseDate date={props.date} />
+            </td>
+            <td>
+                <button className="btn btn-warning" onClick={expenseAction}>
                     Edit title
                 </button>
-            </div>
-        </Card>
+            </td>
+        </tr>
     );
 }
 
