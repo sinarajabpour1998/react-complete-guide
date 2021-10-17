@@ -1,17 +1,22 @@
 import './ExpenseItem.css';
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
+import {useState} from "react";
 
 function ExpenseItem(props) {
+
+    const [title, setTitle] = useState(props.title);
+
     const expenseAction = () => {
-        alert(props.id + " clicked")
+        setTitle("Updated");
+        console.log(title);
     }
 
     return (
         <Card parentClasses={"container"} childClasses={"row text-center item mb-2"}>
             <ExpenseDate date={props.date} />
             <div className="col-md-3">
-                <p>{props.title}</p>
+                <p>{title}</p>
             </div>
             <div className="col-md-3">
                 <p>$ {props.amount}</p>
