@@ -16,16 +16,14 @@ function Expenses(props) {
                 </tr>
                 </thead>
                 <tbody>
-                    <ExpenseItem
-                        id={items[0].id}
-                        title={items[0].title}
-                        date={items[0].date}
-                        amount={items[0].amount} />
-                    <ExpenseItem
-                        id={items[1].id}
-                        title={items[1].title}
-                        date={items[1].date}
-                        amount={items[1].amount} />
+                    {items.map((expense) => (
+                        <ExpenseItem
+                            id={expense.id}
+                            key={expense.id}
+                            title={expense.title}
+                            date={expense.date}
+                            amount={expense.amount} />
+                    ))}
                 </tbody>
             </Table>
         </div>

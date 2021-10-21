@@ -1,15 +1,7 @@
 import './ExpenseItem.css';
 import ExpenseDate from "./ExpenseDate";
-import {useState} from "react";
 
 function ExpenseItem(props) {
-
-    const [title, setTitle] = useState(props.title);
-
-    const expenseAction = () => {
-        setTitle("Updated");
-        console.log(title);
-    }
 
     return (
         <tr>
@@ -17,7 +9,7 @@ function ExpenseItem(props) {
                 <p>{props.id}</p>
             </td>
             <td>
-                <p>{title}</p>
+                <p>{props.title}</p>
             </td>
             <td>
                 <p>$ {props.amount}</p>
@@ -26,9 +18,7 @@ function ExpenseItem(props) {
                 <ExpenseDate date={props.date} />
             </td>
             <td>
-                <button className="btn btn-warning" onClick={expenseAction}>
-                    Edit title
-                </button>
+                -
             </td>
         </tr>
     );
