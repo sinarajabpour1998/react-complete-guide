@@ -11,6 +11,11 @@ function App() {
     { id: 5, title: "Other", date: new Date(2021, 8, 19), amount: 2650 },
   ];
 
+  const handleExpenseNewData = (expenseData) => {
+    console.log("App js call");
+    console.log(expenseData);
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -18,7 +23,7 @@ function App() {
           <div className="mt-4">
             <h4>Main index</h4>
             <div className="mt-4">
-              <NewExpense />
+              <NewExpense onNewExpenseDataSave={handleExpenseNewData} />
               <Expenses items={expenses} />
             </div>
           </div>
