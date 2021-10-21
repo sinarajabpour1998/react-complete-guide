@@ -4,20 +4,37 @@ import {useState} from "react";
 
 const ExpenseForm = (props) => {
 
-    const [expenseTitle, expenseSetTitle] = useState('');
-    const [expenseAmount, expenseSetAmount] = useState('');
-    const [expenseDate, expenseSetDate] = useState('');
+    //const [expenseTitle, expenseSetTitle] = useState('');
+    //const [expenseAmount, expenseSetAmount] = useState('');
+    //const [expenseDate, expenseSetDate] = useState('');
 
+    const [userInput, setUserInput] = useState({
+        enteredTitle: '',
+        enteredAmount: '',
+        enteredDate: ''
+    });
     const onTitleChangeEvent = (event) => {
-        expenseSetTitle(event.target.value);
+        //expenseSetTitle(event.target.value);
+        setUserInput({
+            ...userInput,
+            enteredTitle: event.target.value
+        });
     }
 
     const onAmountChangeEvent = (event) => {
-      expenseSetAmount(event.target.value);
+       //expenseSetAmount(event.target.value);
+        setUserInput({
+            ...userInput,
+            enteredAmount: event.target.value
+        });
     }
 
     const onDateChangeEvent = (event) => {
-      expenseSetDate(event.target.value);
+      //expenseSetDate(event.target.value);
+        setUserInput({
+            ...userInput,
+            enteredDate: event.target.value
+        });
     }
 
     return (
