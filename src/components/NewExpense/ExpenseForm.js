@@ -4,32 +4,37 @@ import {useState} from "react";
 
 const ExpenseForm = (props) => {
 
-    const [userInput, setUserInput] = useState({
-        enteredTitle: '',
-        enteredAmount: '',
-        enteredDate: ''
-    });
+    const [expenseTitle, expenseSetTitle] = useState('');
+    const [expenseAmount, expenseSetAmount] = useState('');
+    const [expenseDate, expenseSetDate] = useState('');
+
     const onTitleChangeEvent = (event) => {
-        setUserInput((prevState) => {
-            return { ...prevState, enteredTitle: event.target.value }
-        });
+        expenseSetTitle(event.target.value);
     }
 
     const onAmountChangeEvent = (event) => {
-       setUserInput((prevState) => {
-           return { ...prevState, enteredAmount: event.target.value }
-       });
+       expenseSetAmount(event.target.value);
     }
 
     const onDateChangeEvent = (event) => {
-        setUserInput((prevState) => {
-            return { ...prevState, enteredDate: event.target.value }
-        });
+      expenseSetDate(event.target.value);
+    }
+
+    const handleFormSubmission = (e) => {
+      e.preventDefault();
+
+      const expenseData = {
+          title: expenseTitle,
+          amount: expenseAmount,
+          date: new Date(expenseDate)
+      }
+
+      console.log(expenseData);
     }
 
     return (
       <div>
-          <Form>
+          <Form onSubmit={handleFormSubmission}>
               <div className="row">
                   <div className="col-md-4">
                       <Form.Group className="mb-3" controlId="title">
