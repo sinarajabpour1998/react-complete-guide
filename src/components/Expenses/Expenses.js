@@ -1,10 +1,23 @@
 import ExpenseItem from "./ExpenseItem";
 import {Table} from "react-bootstrap";
+import ExpensesFilter from "./ExpensesFilter";
+import {useState} from "react";
 
 function Expenses(props) {
     const items = props.items;
+    const [filteredYear, setFilteredYear] = useState('2020');
+
+    const filterChangeHandler = (selectedYear) => {
+        setFilteredYear(selectedYear);
+    };
+
+    const filteredExpenses = props.items.filter((expense) => {
+        return expense.date.getFullYear().toString() === filteredYear;
+    });
+
     return (
         <div className="mt-4">
+            <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
             <Table striped bordered hover variant="dark">
                 <thead>
                 <tr>
@@ -16,7 +29,7 @@ function Expenses(props) {
                 </tr>
                 </thead>
                 <tbody>
-                    {items.map((expense) => (
+                    {filteredExpenses.map((expense) => (
                         <ExpenseItem
                             id={expense.id}
                             key={expense.id}
