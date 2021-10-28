@@ -15,6 +15,19 @@ function Expenses(props) {
         return expense.date.getFullYear().toString() === filteredYear;
     });
 
+    let expensesContent = <td colSpan="6" className="text-center">Nothing to show !</td>;
+
+    if (filteredExpenses.length > 0){
+        expensesContent = filteredExpenses.map((expense) => (
+            <ExpenseItem
+                id={expense.id}
+                key={expense.id}
+                title={expense.title}
+                date={expense.date}
+                amount={expense.amount} />
+        ));
+    }
+
     return (
         <div className="mt-4">
             <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
@@ -29,14 +42,7 @@ function Expenses(props) {
                 </tr>
                 </thead>
                 <tbody>
-                    {filteredExpenses.map((expense) => (
-                        <ExpenseItem
-                            id={expense.id}
-                            key={expense.id}
-                            title={expense.title}
-                            date={expense.date}
-                            amount={expense.amount} />
-                    ))}
+                    {expensesContent}
                 </tbody>
             </Table>
         </div>
